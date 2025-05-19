@@ -1,7 +1,7 @@
 <template>
   <header class="portfolio-header">
     <div class="container">
-      <h1 data-aos="fade-down">Yacine Dahmoun </h1>
+      <h1 data-aos="fade-down">Yacine DAHMOUN </h1>
       <p data-aos="fade-up">Développeur Web Fullstack Junior</p>
       <nav data-aos="fade-in" data-aos-delay="300">
         <ul>

@@ -20,6 +20,8 @@ import Contact from './views/Contact.vue'
 // Importation des animations
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+AOS.init()
+
 
 // Configuration de FontAwesome
 library.add(
