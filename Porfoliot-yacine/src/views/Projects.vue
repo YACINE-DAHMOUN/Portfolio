@@ -57,25 +57,36 @@ export default {
     return {
       projects: [
         {
-          title: 'SocialEvent',
+          title: 'Minnie Tamagotchi',
           description: 'Application web événementielle permettant aux utilisateurs de créer, partager et rejoindre des événements locaux. Implémentation d\'un système de gestion utilisateur, de création d\'événements et d\'un tableau de bord administrateur.',
           technologies: ['PHP', 'MySQL', 'HTML', 'CSS', 'JavaScript'],
           links: [
-            { text: 'GitHub', url: 'https://github.com/YACINE-DAHMOUN' }
+            { text: 'GitHub', url: 'https://github.com/YACINE-DAHMOUN/Minnie-Tamagotchi' },
+            { text: 'Live Demo', url: 'https://minnie-luna.netlify.app' }
+          ]
+        },
+          {
+          title: 'HomeCook',
+          description: 'Application web d\'aide de cuisine a domocile permettant auc utilisateurs de trouver des recettes et planifié leurs repas en fonction des ingrédients présents dans leur cuisine. Intégration d\'un système de recherche avancée, de gestion des recettes et d\'un calendrier de repas.',
+          technologies: ['PHP', 'MySQL', 'HTML', 'CSS', 'JavaScript'],
+          links: [
+            { text: 'GitHub', url: 'https://github.com/YACINE-DAHMOUN/HomeCookApp' }
           ]
         },
         {
           title: 'Cycleschailley.fr',
           description: 'Site vitrine pour un magasin de cycles, conçu avec WordPress et personnalisé selon les besoins du client. Implémentation d\'un catalogue de produits, d\'un système de prise de rendez-vous et d\'une interface administrateur simplifiée.',
           technologies: ['WordPress', 'PHP', 'CSS', 'JavaScript'],
-          links: []
+          links: [
+            { text: 'Site Web', url: 'https://cycleschailley.fr/' },
+          ]
         },
         {
           title: 'Portfolio Vue.js',
           description: 'Ce portfolio créé avec Vue.js et Vite, présentant mes compétences, projets et expériences professionnelles dans une interface moderne et réactive.',
           technologies: ['Vue.js', 'JavaScript', 'HTML', 'CSS', 'Vite'],
           links: [
-            { text: 'GitHub', url: 'https://github.com/YACINE-DAHMOUN' }
+            { text: 'GitHub', url: 'https://github.com/YACINE-DAHMOUN/Portfolio' }
           ]
         }
       ]

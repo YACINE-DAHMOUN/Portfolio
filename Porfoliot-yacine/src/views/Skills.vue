@@ -83,11 +83,10 @@ export default {
         'Npm/Yarn'
       ],
       learningSkills: [
-        'React',
-        'MongoDB',
-        'AWS',
-        'Tests unitaires',
-        'Express.js'
+        'Vue.js 3',
+        'Nuxt.js',
+        'C#',
+        'ASP.NET Core',
       ]
     }
   }
