@@ -196,11 +196,6 @@ async handleSubmit() {
 
     // Vérifier si la réponse est OK
     if (response.ok || response.status === 200) {
-      this.formMessage = {
-        type: 'success',
-        text: 'Votre message a bien été envoyé ! Je vous répondrai dans les plus brefs délais.'
-      };
-
       // Réinitialiser le formulaire
       this.formData = {
         name: '',
@@ -208,6 +203,10 @@ async handleSubmit() {
         subject: '',
         message: ''
       };
+
+      // Rediriger vers la page de succès
+      this.$router.push('public/success');
+
     } else {
       // Log pour debug
       console.log('Response status:', response.status);

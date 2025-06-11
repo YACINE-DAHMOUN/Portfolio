@@ -12,10 +12,15 @@ const router = createRouter({
     {
       path: '/about',
       name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue'),
+      // eslint-disable-next-line no-dupe-keys
+      path: 'public/success',
+
+      // eslint-disable-next-line no-dupe-keys
+      name: 'Success',
+    // Pour servir le fichier HTML statique depuis public/
+      beforeEnter() {
+      window.location.href = '/success.html'
+      }
     },
   ],
 })
