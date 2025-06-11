@@ -36,11 +36,11 @@
           <!-- Stats rapides -->
           <div class="hero-stats" data-aos="fade-up" data-aos-delay="400">
             <div class="stat-item">
-              <span class="stat-number">3+</span>
+              <span class="stat-number">1+</span>
               <span class="stat-label">Années d'expérience</span>
             </div>
             <div class="stat-item">
-              <span class="stat-number">15+</span>
+              <span class="stat-number">5+</span>
               <span class="stat-label">Projets réalisés</span>
             </div>
             <div class="stat-item">
