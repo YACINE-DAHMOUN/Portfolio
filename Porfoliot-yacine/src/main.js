@@ -6,7 +6,25 @@ import App from './App.vue'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons'
-import { faEnvelope, faPhone, faCheck, faGraduationCap, faCode, faTools, faBriefcase } from '@fortawesome/free-solid-svg-icons'
+import {
+  faEnvelope,
+  faPhone,
+  faCheck,
+  faGraduationCap,
+  faCode,
+  faTools,
+  faBriefcase,
+  // Nouvelles icônes pour la page d'accueil
+  faServer,
+  faMobileAlt,
+  faPalette,
+  faCloud,
+  faArrowRight,
+  faPaperPlane,
+  faChevronLeft,
+  faChevronRight,
+  faRocket
+} from '@fortawesome/free-solid-svg-icons'
 
 // Importation des vues
 import Home from './views/Home.vue'
@@ -20,8 +38,6 @@ import Contact from './views/Contact.vue'
 // Importation des animations
 import AOS from 'aos'
 import 'aos/dist/aos.css'
-AOS.init()
-
 
 // Configuration de FontAwesome
 library.add(
@@ -33,7 +49,17 @@ library.add(
   faGraduationCap,
   faCode,
   faTools,
-  faBriefcase
+  faBriefcase,
+  // Nouvelles icônes
+  faServer,
+  faMobileAlt,
+  faPalette,
+  faCloud,
+  faArrowRight,
+  faPaperPlane,
+  faChevronLeft,
+  faChevronRight,
+  faRocket
 )
 
 // Configuration du router
@@ -51,18 +77,17 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
   scrollBehavior(to, from, savedPosition) {
-  if (savedPosition) {
-    return savedPosition
-  } else if (to.hash) {
-    return {
-      el: to.hash,
-      behavior: 'smooth'
+    if (savedPosition) {
+      return savedPosition
+    } else if (to.hash) {
+      return {
+        el: to.hash,
+        behavior: 'smooth'
+      }
+    } else {
+      return { top: 0, behavior: 'smooth' }
     }
-  } else {
-    return { top: 0, behavior: 'smooth' }
   }
-}
-
 })
 
 // Création de l'application

@@ -10,8 +10,12 @@
 
         <div class="about-description">
           <p>
-            En formation développement web et web mobile au titre RNCP 5 à DonkeySchool, je suis à la
-            recherche d'un stage de 2 à 6 mois pour mettre en pratique mes compétences en front-end et back-end.
+            Titulaire du titre Développeur Web et Web Mobile (RNCP niveau 5) obtenu à DonkeySchool, je suis actuellement à la recherche de missions freelance, de projets ou de nouvelles opportunités pour mettre à profit mes compétences en développement front-end et back-end.
+
+Mon parcours professionnel, riche et varié, m’a permis de développer une grande adaptabilité ainsi qu’un excellent sens de la résolution de problèmes. J’ai notamment exercé comme technicien réseau informatique et chef d’équipe installateur en Algérie, avant de devenir auto-entrepreneur en rénovation intérieure en France.
+
+Aujourd’hui, je mets à profit cette double compétence technique et managériale dans le domaine du développement web.
+Je suis une personne créative, rigoureuse et organisée, toujours prête à relever de nouveaux défis et à m’investir pleinement dans des projets stimulants, seul ou en équipe.
           </p>
           <p>
             Mon parcours professionnel varié m'a permis de développer une grande adaptabilité et un sens aigu de la

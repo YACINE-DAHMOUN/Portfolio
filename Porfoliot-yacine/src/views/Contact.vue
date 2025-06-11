@@ -2,7 +2,7 @@
   <div class="section contact-section">
     <div class="container">
       <h2 data-aos="fade-down">Contact</h2>
-      
+
       <div class="contact-container">
         <div class="contact-info" data-aos="fade-right" data-aos-delay="200">
           <h3>Restons en contact</h3>
@@ -10,7 +10,7 @@
             Je suis actuellement à la recherche d'un stage de 2 à 6 mois dans le développement web.
             N'hésitez pas à me contacter pour discuter de votre projet ou d'une opportunité professionnelle.
           </p>
-          
+
           <div class="contact-methods">
             <div class="contact-item">
               <div class="contact-icon">
@@ -21,7 +21,7 @@
                 <a href="mailto:yacine.dahmoun15@gmail.com">yacine.dahmoun15@gmail.com</a>
               </div>
             </div>
-            
+
             <div class="contact-item">
               <div class="contact-icon">
                 <font-awesome-icon :icon="['fas', 'phone']" />
@@ -31,7 +31,7 @@
                 <a href="tel:+33767244276">07 67 24 42 76</a>
               </div>
             </div>
-            
+
             <div class="contact-item">
               <div class="contact-icon">
                 <font-awesome-icon :icon="['fab', 'linkedin']" />
@@ -41,7 +41,7 @@
                 <a href="https://www.linkedin.com/in/yacine-dahmoun-020679327" target="_blank">linkedin.com/in/yacine-dahmoun</a>
               </div>
             </div>
-            
+
             <div class="contact-item">
               <div class="contact-icon">
                 <font-awesome-icon :icon="['fab', 'github']" />
@@ -53,54 +53,75 @@
             </div>
           </div>
         </div>
-        
+
         <div class="contact-form-container" data-aos="fade-left" data-aos-delay="400">
           <h3>Envoyez-moi un message</h3>
-          <form class="contact-form" @submit.prevent="handleSubmit">
+
+          <!-- Formulaire Netlify Forms -->
+          <form
+            class="contact-form"
+            @submit.prevent="handleSubmit"
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+          >
+            <!-- Champs cachés pour Netlify -->
+            <input type="hidden" name="form-name" value="contact" />
+
+            <!-- Champ anti-spam caché -->
+            <div style="display: none;">
+              <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+            </div>
+
             <div class="form-group">
               <label for="name">Nom</label>
-              <input 
-                type="text" 
-                id="name" 
-                v-model="formData.name" 
+              <input
+                type="text"
+                id="name"
+                name="name"
+                v-model="formData.name"
                 placeholder="Votre nom"
                 required
               />
             </div>
-            
+
             <div class="form-group">
               <label for="email">Email</label>
-              <input 
-                type="email" 
-                id="email" 
-                v-model="formData.email" 
+              <input
+                type="email"
+                id="email"
+                name="email"
+                v-model="formData.email"
                 placeholder="Votre email"
                 required
               />
             </div>
-            
+
             <div class="form-group">
               <label for="subject">Sujet</label>
-              <input 
-                type="text" 
-                id="subject" 
-                v-model="formData.subject" 
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                v-model="formData.subject"
                 placeholder="Sujet de votre message"
                 required
               />
             </div>
-            
+
             <div class="form-group">
               <label for="message">Message</label>
-              <textarea 
-                id="message" 
-                v-model="formData.message" 
+              <textarea
+                id="message"
+                name="message"
+                v-model="formData.message"
                 placeholder="Votre message"
                 rows="5"
                 required
               ></textarea>
             </div>
-            
+
             <button type="submit" class="btn-primary" :disabled="submitting">
               <span v-if="submitting">
                 <font-awesome-icon :icon="['fas', 'spinner']" spin />
@@ -111,14 +132,14 @@
                 Envoyer
               </span>
             </button>
-            
+
             <div v-if="formMessage" :class="['form-message', formMessage.type]">
               {{ formMessage.text }}
             </div>
           </form>
         </div>
       </div>
-      
+
       <div class="location-info" data-aos="fade-up" data-aos-delay="600">
         <h3>Localisation</h3>
         <p>
@@ -127,7 +148,7 @@
         </p>
         <p class="availability">
           <font-awesome-icon :icon="['fas', 'calendar-check']" />
-          Disponible pour un stage à partir de maintenant
+          Disponible pour des projets à distance ou en présentiel, en freelance ou toute autre opportunités
         </p>
       </div>
     </div>
@@ -150,46 +171,59 @@ export default {
     }
   },
   methods: {
-    handleSubmit() {
+    async handleSubmit() {
       this.submitting = true;
       this.formMessage = null;
-      
-      // Simuler l'envoi du formulaire (à remplacer par votre logique réelle)
-      setTimeout(() => {
-        // Simulation de succès
+
+      try {
+        // Préparer les données du formulaire pour Netlify
+        const formData = new FormData();
+        formData.append('form-name', 'contact');
+        formData.append('name', this.formData.name);
+        formData.append('email', this.formData.email);
+        formData.append('subject', this.formData.subject);
+        formData.append('message', this.formData.message);
+
+        // Envoyer à Netlify
+        const response = await fetch('/', {
+          method: 'POST',
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams(formData).toString()
+        });
+
+        if (response.ok) {
+          this.formMessage = {
+            type: 'success',
+            text: 'Votre message a bien été envoyé ! Je vous répondrai dans les plus brefs délais.'
+          };
+
+          // Réinitialiser le formulaire
+          this.formData = {
+            name: '',
+            email: '',
+            subject: '',
+            message: ''
+          };
+        } else {
+          throw new Error('Erreur lors de l\'envoi');
+        }
+
+      } catch (error) {
+        console.error('Erreur:', error);
         this.formMessage = {
-          type: 'success',
-          text: 'Votre message a bien été envoyé ! Je vous répondrai dans les plus brefs délais.'
+          type: 'error',
+          text: 'Une erreur est survenue lors de l\'envoi du message. Veuillez réessayer.'
         };
-        
-        // Réinitialiser le formulaire
-        this.formData = {
-          name: '',
-          email: '',
-          subject: '',
-          message: ''
-        };
-        
+      } finally {
         this.submitting = false;
-        
-        // Pour la démonstration seulement - dans une application réelle,
-        // vous effectueriez un appel API pour envoyer le formulaire
-      }, 1500);
-      
-      // En cas d'erreur, vous pouvez utiliser ceci:
-      /*
-      this.formMessage = {
-        type: 'error',
-        text: 'Une erreur est survenue lors de l\'envoi du message. Veuillez réessayer.'
-      };
-      this.submitting = false;
-      */
+      }
     }
   }
 }
 </script>
 
 <style scoped>
+/* Vos styles existants restent identiques */
 .contact-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -391,7 +425,7 @@ export default {
     align-items: center;
     text-align: center;
   }
-  
+
   .contact-details {
     text-align: center;
   }

@@ -50,7 +50,7 @@ export default {
 /* Variables CSS */
 :root {
   --primary-color: #1a2838;
-  --primary-dark: #0056B3;
+  --primary-dark: #0036b3f1;
   --secondary-color: #FFC107;
   --text-color: #333333;
   --bg-color: #F4F4F4;
