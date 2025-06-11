@@ -171,37 +171,31 @@ export default {
     }
   },
   methods: {
-    // 2. MODIFIEZ votre méthode handleSubmit dans Contact.vue :
+  // Dans votre Contact.vue, remplacez la méthode handleSubmit par ceci :
 
 async handleSubmit() {
   this.submitting = true;
   this.formMessage = null;
 
   try {
-    // Encoder les données pour Netlify
-    const encode = (data) => {
-      return Object.keys(data)
-        .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-        .join("&");
-    };
+    // Méthode plus simple et plus fiable
+    const formData = new URLSearchParams();
+    formData.append('form-name', 'contact');
+    formData.append('name', this.formData.name);
+    formData.append('email', this.formData.email);
+    formData.append('subject', this.formData.subject);
+    formData.append('message', this.formData.message);
 
-    // Préparer les données
-    const formData = {
-      "form-name": "contact",
-      "name": this.formData.name,
-      "email": this.formData.email,
-      "subject": this.formData.subject,
-      "message": this.formData.message
-    };
-
-    // Envoyer à Netlify
-    const response = await fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode(formData)
+    const response = await fetch('/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: formData.toString()
     });
 
-    if (response.ok) {
+    // Vérifier si la réponse est OK
+    if (response.ok || response.status === 200) {
       this.formMessage = {
         type: 'success',
         text: 'Votre message a bien été envoyé ! Je vous répondrai dans les plus brefs délais.'
@@ -215,20 +209,23 @@ async handleSubmit() {
         message: ''
       };
     } else {
-      throw new Error(`Erreur HTTP: ${response.status}`);
+      // Log pour debug
+      console.log('Response status:', response.status);
+      console.log('Response text:', await response.text());
+      throw new Error(`HTTP ${response.status}`);
     }
 
   } catch (error) {
-    console.error('Erreur détaillée:', error);
+    console.error('Erreur complète:', error);
     this.formMessage = {
       type: 'error',
-      text: 'Une erreur est survenue lors de l\'envoi du message. Veuillez réessayer.'
+      text: 'Une erreur est survenue. Veuillez essayer de m\'envoyer un email directement.'
     };
   } finally {
     this.submitting = false;
   }
 }
-  }
+}
 }
 </script>
 
