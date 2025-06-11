@@ -7,7 +7,7 @@
         <div class="contact-info" data-aos="fade-right" data-aos-delay="200">
           <h3>Restons en contact</h3>
           <p>
-            Je suis actuellement à la recherche d'un stage de 2 à 6 mois dans le développement web.
+            Je suis actuellement à la recherche de missions freelance, de projets ou de nouvelles opportunités dans le développement web.
             N'hésitez pas à me contacter pour discuter de votre projet ou d'une opportunité professionnelle.
           </p>
 
