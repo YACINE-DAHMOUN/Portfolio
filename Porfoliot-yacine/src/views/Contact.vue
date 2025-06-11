@@ -171,53 +171,63 @@ export default {
     }
   },
   methods: {
-    async handleSubmit() {
-      this.submitting = true;
-      this.formMessage = null;
+    // 2. MODIFIEZ votre méthode handleSubmit dans Contact.vue :
 
-      try {
-        // Préparer les données du formulaire pour Netlify
-        const formData = new FormData();
-        formData.append('form-name', 'contact');
-        formData.append('name', this.formData.name);
-        formData.append('email', this.formData.email);
-        formData.append('subject', this.formData.subject);
-        formData.append('message', this.formData.message);
+async handleSubmit() {
+  this.submitting = true;
+  this.formMessage = null;
 
-        // Envoyer à Netlify
-        const response = await fetch('/', {
-          method: 'POST',
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: new URLSearchParams(formData).toString()
-        });
+  try {
+    // Encoder les données pour Netlify
+    const encode = (data) => {
+      return Object.keys(data)
+        .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+        .join("&");
+    };
 
-        if (response.ok) {
-          this.formMessage = {
-            type: 'success',
-            text: 'Votre message a bien été envoyé ! Je vous répondrai dans les plus brefs délais.'
-          };
+    // Préparer les données
+    const formData = {
+      "form-name": "contact",
+      "name": this.formData.name,
+      "email": this.formData.email,
+      "subject": this.formData.subject,
+      "message": this.formData.message
+    };
 
-          // Réinitialiser le formulaire
-          this.formData = {
-            name: '',
-            email: '',
-            subject: '',
-            message: ''
-          };
-        } else {
-          throw new Error('Erreur lors de l\'envoi');
-        }
+    // Envoyer à Netlify
+    const response = await fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode(formData)
+    });
 
-      } catch (error) {
-        console.error('Erreur:', error);
-        this.formMessage = {
-          type: 'error',
-          text: 'Une erreur est survenue lors de l\'envoi du message. Veuillez réessayer.'
-        };
-      } finally {
-        this.submitting = false;
-      }
+    if (response.ok) {
+      this.formMessage = {
+        type: 'success',
+        text: 'Votre message a bien été envoyé ! Je vous répondrai dans les plus brefs délais.'
+      };
+
+      // Réinitialiser le formulaire
+      this.formData = {
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      };
+    } else {
+      throw new Error(`Erreur HTTP: ${response.status}`);
     }
+
+  } catch (error) {
+    console.error('Erreur détaillée:', error);
+    this.formMessage = {
+      type: 'error',
+      text: 'Une erreur est survenue lors de l\'envoi du message. Veuillez réessayer.'
+    };
+  } finally {
+    this.submitting = false;
+  }
+}
   }
 }
 </script>
