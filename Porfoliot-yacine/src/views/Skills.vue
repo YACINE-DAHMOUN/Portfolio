@@ -84,7 +84,6 @@ export default {
       ],
       learningSkills: [
         'Vue.js 3',
-        'Nuxt.js',
         'C#',
         'ASP.NET Core',
       ]

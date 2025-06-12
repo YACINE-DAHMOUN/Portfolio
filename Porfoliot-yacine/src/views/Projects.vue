@@ -67,7 +67,7 @@ export default {
         },
           {
           title: 'HomeCook',
-          description: 'Application web d\'aide de cuisine a domocile permettant auc utilisateurs de trouver des recettes et planifié leurs repas en fonction des ingrédients présents dans leur cuisine. Intégration d\'un système de recherche avancée, de gestion des recettes et d\'un calendrier de repas.',
+          description: 'Application web d\'aide de cuisine a domicile permettant auc utilisateurs de trouver des recettes et planifié leurs repas en fonction des ingrédients présents dans leur cuisine. Intégration d\'un système de recherche avancée, de gestion des recettes et d\'un calendrier de repas.',
           technologies: ['PHP', 'MySQL', 'HTML', 'CSS', 'JavaScript'],
           links: [
             { text: 'GitHub', url: 'https://github.com/YACINE-DAHMOUN/HomeCookApp' }

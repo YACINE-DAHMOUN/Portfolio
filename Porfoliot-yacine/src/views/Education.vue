@@ -2,11 +2,11 @@
   <div class="section education-section">
     <div class="container">
       <h2 data-aos="fade-down">Formation</h2>
-      
+
       <div class="education-container">
-        <div 
-          v-for="(education, index) in educations" 
-          :key="index" 
+        <div
+          v-for="(education, index) in educations"
+          :key="index"
           class="education-card"
           data-aos="fade-up"
           :data-aos-delay="200 + (index * 100)"
@@ -14,14 +14,14 @@
           <div class="education-icon">
             <font-awesome-icon :icon="['fas', 'graduation-cap']" />
           </div>
-          
+
           <div class="education-period">{{ education.period }}</div>
-          
+
           <div class="education-content">
             <h3>{{ education.degree }}</h3>
             <h4>{{ education.institution }}</h4>
             <p>{{ education.description }}</p>
-            
+
             <div v-if="education.skills && education.skills.length" class="education-skills">
               <span v-for="(skill, skillIndex) in education.skills" :key="skillIndex" class="skill-tag">
                 {{ skill }}
@@ -30,7 +30,7 @@
           </div>
         </div>
       </div>
-      
+
       <div class="certifications" data-aos="fade-up" data-aos-delay="500">
         <h3>Certifications complémentaires</h3>
         <div class="cert-container">
@@ -40,11 +40,11 @@
           </div>
         </div>
       </div>
-      
+
       <div class="education-summary" data-aos="fade-up" data-aos-delay="600">
         <h3>Objectifs d'apprentissage</h3>
         <p>
-          Je suis passionné par l'apprentissage continu et je cherche constamment à développer 
+          Je suis passionné par l'apprentissage continu et je cherche constamment à développer
           mes compétences dans le domaine du développement web. Mes objectifs pour les mois à venir sont :
         </p>
         <ul>
@@ -67,7 +67,7 @@ export default {
         {
           degree: 'Formation Développeur Web',
           institution: 'DonkeySchool Paris',
-          period: 'En cours',
+          period: 'Septembre2024 - Mai 2025',
           description: 'Titre RNCP Niveau 5 Développeur Web et Web Mobile. Formation intensive couvrant le développement front-end et back-end, ainsi que les méthodes agiles et la gestion de projet.',
           skills: ['HTML/CSS', 'JavaScript', 'PHP', 'Node.js', 'Angular', 'Symfony']
         },
@@ -267,7 +267,7 @@ export default {
     left: 0;
     margin-bottom: 15px;
   }
-  
+
   .education-period {
     position: relative;
     top: 0;
@@ -275,7 +275,7 @@ export default {
     display: inline-block;
     margin-bottom: 15px;
   }
-  
+
   .education-content {
     margin-top: 0;
   }
